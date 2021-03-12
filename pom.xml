@@ -72,7 +72,7 @@
     <icon.linux>${project.basedir}/src/main/resources/icons/composition-map.png</icon.linux>
     <icon>${icon.windows}</icon>
     <license.file>${project.basedir}/LICENSE.txt</license.file>
-    <win.uuid>09749a55-ede7-4ca5-8c07-0292ecd5fc17</win.uuid>
+    <win.uuid>69e2f209-bae9-4722-bb1f-d590cd692f7f</win.uuid>
     <mac.package.identifier>Composition-Map</mac.package.identifier>
     <linux.deb.maintainer>christian.poitras@ircm.qc.ca</linux.deb.maintainer>
     <linux.rpm.license.type>GPLv3+</linux.rpm.license.type>
