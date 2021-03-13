@@ -18,9 +18,9 @@
 package ca.qc.ircm.compositionmap;
 
 import ca.qc.ircm.compositionmap.gui.SplashScreen;
-import ca.qc.ircm.compositionmap.gui.message.MessageDialog;
-import ca.qc.ircm.compositionmap.gui.message.MessageDialog.MessageDialogType;
 import javafx.application.Preloader;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,12 +30,10 @@ import org.slf4j.LoggerFactory;
  */
 public class MainPreloader extends Preloader {
   private static final Logger logger = LoggerFactory.getLogger(Main.class);
-  private Stage stage;
   private SplashScreen splash;
 
   @Override
   public void start(Stage primaryStage) throws Exception {
-    this.stage = primaryStage;
     splash = new SplashScreen(primaryStage);
     splash.show();
   }
@@ -51,8 +49,7 @@ public class MainPreloader extends Preloader {
   public boolean handleErrorNotification(ErrorNotification info) {
     logger.error("Could not start application", info.getCause());
     com.airhacks.afterburner.injection.Injector.resetInstanceSupplier();
-    new MessageDialog(stage, MessageDialogType.ERROR, "Could not start Composition Map",
-        info.getCause().getMessage()).showAndWait();
+    new Alert(AlertType.ERROR, "Could not start Composition Map, see error in log").showAndWait();
     return true;
   }
 }
