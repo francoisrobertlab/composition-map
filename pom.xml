@@ -55,6 +55,7 @@
     <spring-boot.version>2.4.3</spring-boot.version>
     <javax.inject.version>1</javax.inject.version>
     <afterburner.fx.version>1.7.0</afterburner.fx.version>
+    <commons-lang3.version>3.1</commons-lang3.version>
     <testFx.version>4.0.15-alpha</testFx.version>
     <javafx.version>14</javafx.version>
     <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
@@ -138,16 +139,27 @@
       <artifactId>javafx-fxml</artifactId>
       <version>${javafx.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>${commons-lang3.version}</version>
+    </dependency>
   </dependencies>
   <build>
     <resources>
       <resource>
         <directory>src/main/java</directory>
         <includes>
-          <include>**/*.fxml</include>
           <include>**/*.properties</include>
           <include>**/*.css</include>
           <include>**/*.png</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>src/main/java</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>**/*.fxml</include>
         </includes>
       </resource>
       <resource>

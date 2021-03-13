@@ -17,6 +17,7 @@
 
 package ca.qc.ircm.compositionmap;
 
+import ca.qc.ircm.compositionmap.gui.MainGui;
 import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.stage.Stage;
@@ -50,9 +51,9 @@ public class FxApplication extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
+    MainGui app = new MainGui();
     notifyPreloader(new ApplicationStarted());
-    //MainGui app = new MainGui();
-    //app.show();
+    app.show();
   }
 
   @Override

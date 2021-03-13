@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2021 Institut de recherches cliniques de Montreal (IRCM)
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?scenebuilder-preview-i18n-resource splashscreen.properties?>
+
+<BorderPane fx:id="layout" styleClass="main" prefWidth="550" prefHeight="420" xmlns:fx="http://javafx.com/fxml" fx:controller="ca.qc.ircm.compositionmap.gui.MainPresenter">
+  <top>
+    <MenuBar fx:id="menu">
+      <Menu text="Help">
+        <MenuItem text="About" onAction="#about"/>
+      </Menu>
+    </MenuBar>
+  </top>
+  <center>
+    <VBox styleClass="center">
+      <VBox styleClass="field">
+        <Label labelFor="$sequence" text="Sequence for which to generate composition map"/>
+        <TextArea fx:id="sequence" id="sequence"/>
+      </VBox>
+      <VBox styleClass="field">
+        <fx:define>
+          <ToggleGroup fx:id="sequenceType"/>
+        </fx:define>
+        <Label text="Type of sequence"/>
+        <VBox styleClass="choices">
+          <RadioButton fx:id="protein" text="Protein" toggleGroup="$sequenceType"/>
+          <RadioButton fx:id="dna" text="DNA" toggleGroup="$sequenceType"/>
+          <RadioButton fx:id="rna" text="RNA" toggleGroup="$sequenceType"/>
+          <RadioButton fx:id="other" text="Other" toggleGroup="$sequenceType"/>
+        </VBox>
+      </VBox>
+      <VBox styleClass="field">
+        <Label labelFor="$addChars" text="Additional letters to include in composition map (separated by space or comma)"/>
+        <TextField fx:id="addChars" id="addChars"/>
+      </VBox>
+      <VBox styleClass="field">
+        <Label labelFor="$removeChars" text="Letters to remove from composition map (separated by space or comma)"/>
+        <TextField fx:id="removeChars" id="removeChars"/>
+      </VBox>
+    </VBox>
+  </center>
+</BorderPane>
