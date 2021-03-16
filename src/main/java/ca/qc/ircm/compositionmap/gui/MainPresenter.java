@@ -85,7 +85,7 @@ public class MainPresenter {
         (ob, ov, nv) -> sequenceTypeProperty.setValue((SequenceType) nv.getUserData()));
     sequenceTypeProperty.addListener((ob, ov, nv) -> sequenceType.getToggles().stream()
         .filter(toggle -> toggle.getUserData() == nv).findFirst()
-        .ifPresent(toggle -> toggle.setSelected(true)));
+        .ifPresentOrElse(toggle -> toggle.setSelected(true), () -> other.setSelected(true)));
 
     // Default values.
     other.setSelected(true);
