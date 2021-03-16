@@ -145,6 +145,26 @@ public class SequenceServiceTest {
   }
 
   @Test
+  public void symbolsOrder_Dna() {
+    assertEquals("ATCG", service.symbolsOrder(DNA));
+  }
+
+  @Test
+  public void symbolsOrder_Rna() {
+    assertEquals("AUCG", service.symbolsOrder(RNA));
+  }
+
+  @Test
+  public void symbolsOrder_Protein() {
+    assertEquals("EDRKHYFWMILVQNCSTAGP", service.symbolsOrder(PROTEIN));
+  }
+
+  @Test
+  public void symbolsOrder_Null() {
+    assertEquals("", service.symbolsOrder(null));
+  }
+
+  @Test
   public void compositionMap() {
     String dna = "GAAGAAAATTTGTGAAAGAAGGACGGGTCA";
 

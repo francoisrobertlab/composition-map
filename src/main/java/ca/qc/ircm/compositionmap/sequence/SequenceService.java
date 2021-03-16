@@ -60,6 +60,30 @@ public class SequenceService {
   }
 
   /**
+   * Returns symbols order for sequence type.
+   *
+   * @param type
+   *          sequence type
+   * @return symbols order for sequence type
+   */
+  public String symbolsOrder(SequenceType type) {
+    if (type == null) {
+      return "";
+    }
+
+    switch (type) {
+      case DNA:
+        return "ATCG";
+      case RNA:
+        return "AUCG";
+      case PROTEIN:
+        return "EDRKHYFWMILVQNCSTAGP";
+      default:
+        return "";
+    }
+  }
+
+  /**
    * Creates composition map for the sequence.
    *
    * @param sequence
