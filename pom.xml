@@ -196,7 +196,7 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <configuration>
             <excludes>
-              <exclude>ca/qc/ircm/genefinder/test/**/*.java</exclude>
+              <exclude>ca/qc/ircm/compositionmap/test/**/*.java</exclude>
             </excludes>
           </configuration>
         </plugin>
