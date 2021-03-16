@@ -17,26 +17,22 @@
 
 package ca.qc.ircm.compositionmap.gui;
 
-import ca.qc.ircm.compositionmap.sequence.SequenceType;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import static ca.qc.ircm.compositionmap.sequence.SequenceType.DNA;
+import static ca.qc.ircm.compositionmap.sequence.SequenceType.PROTEIN;
+import static ca.qc.ircm.compositionmap.sequence.SequenceType.RNA;
+
+import ca.qc.ircm.compositionmap.sequence.SequenceService;
 import java.util.stream.Collectors;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
+import javax.inject.Inject;
 import org.apache.commons.lang3.SystemUtils;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -49,7 +45,7 @@ import org.springframework.stereotype.Component;
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class MainPresenter {
   private StringProperty sequenceProperty = new SimpleStringProperty();
-  private ObjectProperty<SequenceType> sequenceTypeProperty = new SimpleObjectProperty<>();
+  private StringProperty symbolsProperty = new SimpleStringProperty();
   @FXML
   private BorderPane layout;
   @FXML
@@ -57,19 +53,9 @@ public class MainPresenter {
   @FXML
   private TextArea sequence;
   @FXML
-  private ToggleGroup sequenceType;
-  @FXML
-  private RadioButton protein;
-  @FXML
-  private RadioButton dna;
-  @FXML
-  private RadioButton rna;
-  @FXML
-  private RadioButton other;
-  @FXML
-  private TextField addChars;
-  @FXML
-  private TextField removeChars;
+  private TextField symbols;
+  @Inject
+  private SequenceService service;
 
   @FXML
   private void initialize() {
@@ -78,17 +64,38 @@ public class MainPresenter {
     }
 
     sequenceProperty.bindBidirectional(sequence.textProperty());
-    protein.setUserData(SequenceType.PROTEIN);
-    dna.setUserData(SequenceType.DNA);
-    rna.setUserData(SequenceType.RNA);
-    sequenceType.selectedToggleProperty().addListener(
-        (ob, ov, nv) -> sequenceTypeProperty.setValue((SequenceType) nv.getUserData()));
-    sequenceTypeProperty.addListener((ob, ov, nv) -> sequenceType.getToggles().stream()
-        .filter(toggle -> toggle.getUserData() == nv).findFirst()
-        .ifPresentOrElse(toggle -> toggle.setSelected(true), () -> other.setSelected(true)));
+    symbolsProperty.bindBidirectional(symbols.textProperty());
+  }
 
-    // Default values.
-    other.setSelected(true);
+  @FXML
+  private void proteinSymbols() {
+    symbolsProperty.set(mergeSymbols(service.symbolsOrder(PROTEIN), sequenceSymbols()));
+  }
+
+  @FXML
+  private void dnaSymbols() {
+    symbolsProperty.set(mergeSymbols(service.symbolsOrder(DNA), sequenceSymbols()));
+  }
+
+  @FXML
+  private void rnaSymbols() {
+    symbolsProperty.set(mergeSymbols(service.symbolsOrder(RNA), sequenceSymbols()));
+  }
+
+  @FXML
+  private void otherSymbols() {
+    symbolsProperty.set(sequenceSymbols());
+  }
+
+  private String mergeSymbols(String symbols1, String symbols2) {
+    StringBuilder merge = new StringBuilder();
+    (symbols1 + symbols2).chars().distinct().forEach(c -> merge.append((char) c));
+    return merge.toString();
+  }
+
+  private String sequenceSymbols() {
+    return sequenceProperty.getValueSafe().chars().distinct()
+        .mapToObj(c -> String.valueOf((char) c)).sorted().collect(Collectors.joining());
   }
 
   @FXML
@@ -99,24 +106,5 @@ public class MainPresenter {
   @FXML
   private void save() {
     new Alert(AlertType.WARNING, "Not programmed yet").showAndWait();
-  }
-
-  List<String> getAddChars() {
-    String value = addChars.textProperty().get();
-    return stringToList(value);
-  }
-
-  List<String> getRemoveChars() {
-    String value = removeChars.textProperty().get();
-    return stringToList(value);
-  }
-
-  private ObservableList<String> stringToList(String value) {
-    return FXCollections.observableArrayList(
-        value.isEmpty() ? new ArrayList<>() : Arrays.asList(value.split("[, ]+", -1)));
-  }
-
-  private String listToString(List<? extends String> value) {
-    return value.stream().collect(Collectors.joining(", "));
   }
 }

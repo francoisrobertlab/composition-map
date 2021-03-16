@@ -21,8 +21,7 @@
 .main .center .field {
   -fx-spacing: 5;
 }
-.main .center .choices {
-  -fx-padding: 0 10;
+.main .center .field .symbols-button {
   -fx-spacing: 5;
 }
 .main .buttons {

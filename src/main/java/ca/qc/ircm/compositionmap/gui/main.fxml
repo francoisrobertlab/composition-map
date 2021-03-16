@@ -36,24 +36,17 @@
         <TextArea fx:id="sequence" id="sequence"/>
       </VBox>
       <VBox styleClass="field">
-        <fx:define>
-          <ToggleGroup fx:id="sequenceType"/>
-        </fx:define>
-        <Label text="Type of sequence"/>
-        <VBox styleClass="choices">
-          <RadioButton fx:id="protein" text="Protein" toggleGroup="$sequenceType"/>
-          <RadioButton fx:id="dna" text="DNA" toggleGroup="$sequenceType"/>
-          <RadioButton fx:id="rna" text="RNA" toggleGroup="$sequenceType"/>
-          <RadioButton fx:id="other" text="Other" toggleGroup="$sequenceType"/>
-        </VBox>
+        <Label text="Pre-defined symbols"/>
+        <HBox styleClass="symbols-button">
+          <Button text="Protein" onAction="#proteinSymbols"/>
+          <Button text="DNA" onAction="#dnaSymbols"/>
+          <Button text="RNA" onAction="#rnaSymbols"/>
+          <Button text="Other" onAction="#otherSymbols"/>
+        </HBox>
       </VBox>
       <VBox styleClass="field">
-        <Label labelFor="$addChars" text="Additional letters to include in composition map (separated by space or comma)"/>
-        <TextField fx:id="addChars" id="addChars"/>
-      </VBox>
-      <VBox styleClass="field">
-        <Label labelFor="$removeChars" text="Letters to remove from composition map (separated by space or comma)"/>
-        <TextField fx:id="removeChars" id="removeChars"/>
+        <Label labelFor="$symbols" text="Symbols for composition map"/>
+        <TextField fx:id="symbols" id="symbols"/>
       </VBox>
     </VBox>
   </center>
