@@ -57,4 +57,9 @@
       </VBox>
     </VBox>
   </center>
+  <bottom>
+    <HBox styleClass="buttons">
+      <Button text="Save composition map" onAction="#save"/>
+    </HBox>
+  </bottom>
 </BorderPane>

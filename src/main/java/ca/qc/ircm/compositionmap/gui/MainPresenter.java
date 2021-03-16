@@ -29,6 +29,8 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
@@ -92,6 +94,11 @@ public class MainPresenter {
   @FXML
   private void about() {
     new AboutDialog(layout.getScene().getWindow());
+  }
+
+  @FXML
+  private void save() {
+    new Alert(AlertType.WARNING, "Not programmed yet").showAndWait();
   }
 
   List<String> getAddChars() {

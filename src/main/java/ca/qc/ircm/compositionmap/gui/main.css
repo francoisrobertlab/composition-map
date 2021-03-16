@@ -25,3 +25,7 @@
   -fx-padding: 0 10;
   -fx-spacing: 5;
 }
+.main .buttons {
+  -fx-padding: 10 20;
+  -fx-spacing: 20;
+}
