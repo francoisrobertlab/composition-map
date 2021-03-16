@@ -36,6 +36,10 @@ public class SequenceService {
    * @return returns most likely type of sequence
    */
   public Optional<SequenceType> type(String sequence) {
+    if (sequence == null || sequence.isEmpty()) {
+      return Optional.empty();
+    }
+
     String filteredSequence = sequence.replaceAll("\\W", "");
     Set<SequenceType> types = Stream.of(SequenceType.values()).filter(type -> {
       double error = error(filteredSequence, type.charPattern);

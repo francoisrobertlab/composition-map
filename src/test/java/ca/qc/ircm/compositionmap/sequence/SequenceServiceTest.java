@@ -136,6 +136,16 @@ public class SequenceServiceTest {
   }
 
   @Test
+  public void type_Empty() {
+    assertEquals(null, service.type("").orElse(null));
+  }
+
+  @Test
+  public void type_Null() {
+    assertEquals(null, service.type(null).orElse(null));
+  }
+
+  @Test
   public void compositionMap() {
     String dna = "GAAGAAAATTTGTGAAAGAAGGACGGGTCA";
 
