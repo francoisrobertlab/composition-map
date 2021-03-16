@@ -1,12 +1,11 @@
 package ca.qc.ircm.compositionmap.sequence;
 
-import static ca.qc.ircm.compositionmap.SequenceType.DNA;
-import static ca.qc.ircm.compositionmap.SequenceType.PROTEIN;
-import static ca.qc.ircm.compositionmap.SequenceType.RNA;
+import static ca.qc.ircm.compositionmap.sequence.SequenceType.DNA;
+import static ca.qc.ircm.compositionmap.sequence.SequenceType.PROTEIN;
+import static ca.qc.ircm.compositionmap.sequence.SequenceType.RNA;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import ca.qc.ircm.compositionmap.SequenceType;
 import ca.qc.ircm.compositionmap.test.config.ServiceTestAnnotations;
 import org.apache.commons.lang3.SystemUtils;
 import org.junit.jupiter.api.Test;

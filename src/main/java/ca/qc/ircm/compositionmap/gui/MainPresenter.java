@@ -17,7 +17,7 @@
 
 package ca.qc.ircm.compositionmap.gui;
 
-import ca.qc.ircm.compositionmap.SequenceType;
+import ca.qc.ircm.compositionmap.sequence.SequenceType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

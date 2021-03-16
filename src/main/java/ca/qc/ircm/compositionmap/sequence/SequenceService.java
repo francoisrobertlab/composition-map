@@ -1,6 +1,5 @@
 package ca.qc.ircm.compositionmap.sequence;
 
-import ca.qc.ircm.compositionmap.SequenceType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;

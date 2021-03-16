@@ -1,4 +1,4 @@
-package ca.qc.ircm.compositionmap;
+package ca.qc.ircm.compositionmap.sequence;
 
 /**
  * Sequence types.
