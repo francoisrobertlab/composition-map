@@ -2,7 +2,6 @@ package ca.qc.ircm.compositionmap.sequence;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -65,29 +64,17 @@ public class SequenceService {
    *
    * @param sequence
    *          sequence
-   * @param addChars
-   *          add these chars to the composition map
-   * @param removeChars
-   *          remove these chars from the composition map
+   * @param symbols
+   *          symbols to use
    * @return composition map for the sequence
    */
-  public String compositionMap(String sequence, char[] addChars, char[] removeChars) {
-    List<Character> symbols = sequence.chars().distinct().sorted()
-        .mapToObj(c -> Character.valueOf((char) c)).collect(Collectors.toList());
-    if (addChars != null) {
-      String.valueOf(addChars).chars().mapToObj(c -> Character.valueOf((char) c))
-          .filter(c -> !symbols.contains(c)).forEach(c -> symbols.add(c));
-    }
-    if (removeChars != null) {
-      String.valueOf(removeChars).chars().mapToObj(c -> Character.valueOf((char) c))
-          .forEach(c -> symbols.remove(Character.valueOf(c)));
-    }
-    Collections.sort(symbols);
+  public String compositionMap(String sequence, String symbols) {
     List<String> lines = new ArrayList<>();
     // Column headers
     lines.add("Symbols\t" + IntStream.range(0, sequence.length()).mapToObj(v -> "S" + (v + 1))
         .collect(Collectors.joining("\t")));
-    for (Character symbol : symbols) {
+    for (int i = 0; i < symbols.length(); i++) {
+      Character symbol = symbols.charAt(i);
       lines.add(symbol + "\t" + sequence.chars().mapToObj(c -> symbol == c ? "1" : "0")
           .collect(Collectors.joining("\t")));
     }
