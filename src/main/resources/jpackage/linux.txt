@@ -16,6 +16,10 @@
 "$[project.organization.name]"
 --icon
 "$[icon]"
+--module-path
+$[java.home]/jmods
+--add-modules
+$[jpackage.modules]
 --linux-deb-maintainer
 "$[linux.deb.maintainer]"
 --linux-menu-group

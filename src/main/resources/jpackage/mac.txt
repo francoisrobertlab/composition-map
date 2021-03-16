@@ -16,6 +16,10 @@
 "$[project.organization.name]"
 --icon
 "$[icon]"
+--module-path
+$[java.home]/jmods
+--add-modules
+$[jpackage.modules]
 --java-options
 "-Dlogging.file.name=${user.home}/$[project.artifactId]/$[project.artifactId].log"
 --mac-package-identifier

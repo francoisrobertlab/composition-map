@@ -63,6 +63,7 @@
     <jpackage>${java.home}/bin/jpackage</jpackage>
     <jpackage.skip>true</jpackage.skip>
     <jpackage.input>${project.build.directory}/jpackage</jpackage.input>
+    <jpackage.modules>java.base,java.desktop,java.naming,java.scripting,jdk.unsupported,jdk.unsupported.desktop</jpackage.modules>
     <jpackage.options.windows>${project.build.directory}/classes/jpackage/windows.txt</jpackage.options.windows>
     <jpackage.options.mac>${project.build.directory}/classes/jpackage/mac.txt</jpackage.options.mac>
     <jpackage.options.linux>${project.build.directory}/classes/jpackage/linux.txt</jpackage.options.linux>
