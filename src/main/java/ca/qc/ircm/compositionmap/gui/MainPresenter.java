@@ -21,10 +21,14 @@ import static ca.qc.ircm.compositionmap.sequence.SequenceType.DNA;
 import static ca.qc.ircm.compositionmap.sequence.SequenceType.PROTEIN;
 import static ca.qc.ircm.compositionmap.sequence.SequenceType.RNA;
 
+import ca.qc.ircm.compositionmap.sequence.SaveCompositionMapTaskFactory;
 import ca.qc.ircm.compositionmap.sequence.SequenceService;
+import java.io.File;
 import java.util.stream.Collectors;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.concurrent.Task;
+import javafx.concurrent.Worker.State;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -32,6 +36,8 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javax.inject.Inject;
 import org.apache.commons.lang3.SystemUtils;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -56,6 +62,9 @@ public class MainPresenter {
   private TextField symbols;
   @Inject
   private SequenceService service;
+  @Inject
+  private SaveCompositionMapTaskFactory taskFactory;
+  private FileChooser outputChooser = new FileChooser();
 
   @FXML
   private void initialize() {
@@ -65,6 +74,8 @@ public class MainPresenter {
 
     sequenceProperty.bindBidirectional(sequence.textProperty());
     symbolsProperty.bindBidirectional(symbols.textProperty());
+    outputChooser.setTitle("Select Output");
+    outputChooser.getExtensionFilters().add(new ExtensionFilter("Tab delimited", "*.txt"));
   }
 
   @FXML
@@ -94,8 +105,8 @@ public class MainPresenter {
   }
 
   private String sequenceSymbols() {
-    return sequenceProperty.getValueSafe().chars().distinct()
-        .mapToObj(c -> String.valueOf((char) c)).sorted().collect(Collectors.joining());
+    return getSequence().chars().distinct().mapToObj(c -> String.valueOf((char) c)).sorted()
+        .collect(Collectors.joining());
   }
 
   @FXML
@@ -105,6 +116,29 @@ public class MainPresenter {
 
   @FXML
   private void save() {
-    new Alert(AlertType.WARNING, "Not programmed yet").showAndWait();
+    JavafxUtils.setValidInitialDirectory(outputChooser);
+    File output = outputChooser.showSaveDialog(layout.getScene().getWindow());
+    if (output != null) {
+      outputChooser.setInitialDirectory(output.getParentFile());
+      Task<?> task = taskFactory.create(getSequence(), symbolsProperty.get(), output.toPath());
+      task.stateProperty().addListener((observable, oldValue, newValue) -> {
+        if (newValue == State.FAILED || newValue == State.SUCCEEDED
+            || newValue == State.CANCELLED) {
+          //progressDialog.close();
+        }
+        if (newValue == State.FAILED) {
+          new Alert(AlertType.ERROR, "Could not save composition map to file " + output.getName())
+              .showAndWait();
+        } else if (newValue == State.SUCCEEDED) {
+          new Alert(AlertType.INFORMATION, "Composition map saved to " + output.getName())
+              .showAndWait();
+        }
+      });
+      new Thread(task).start();
+    }
+  }
+
+  private String getSequence() {
+    return sequenceProperty.getValueSafe().replaceAll("[\\r\\n]", "");
   }
 }
