@@ -41,7 +41,7 @@ public class SequenceServiceTest {
 
     String compositionMap = service.compositionMap(dna, "ATCG");
 
-    String[] lines = compositionMap.split("\n");
+    String[] lines = compositionMap.split(SystemUtils.LINE_SEPARATOR);
     assertEquals(5, lines.length);
     for (int i = 0; i < lines.length; i++) {
       assertEquals(dna.length() + 1, lines[0].split("\t", -1).length);
@@ -111,7 +111,7 @@ public class SequenceServiceTest {
 
     String compositionMap = service.compositionMap(dna, "ACT");
 
-    String[] lines = compositionMap.split("\n");
+    String[] lines = compositionMap.split(SystemUtils.LINE_SEPARATOR);
     assertEquals(4, lines.length);
     for (int i = 0; i < lines.length; i++) {
       assertEquals(dna.length() + 1, lines[0].split("\t", -1).length);
@@ -140,7 +140,7 @@ public class SequenceServiceTest {
 
     String compositionMap = service.compositionMap(dna, "ACRT");
 
-    String[] lines = compositionMap.split("\n");
+    String[] lines = compositionMap.split(SystemUtils.LINE_SEPARATOR);
     assertEquals(5, lines.length);
     for (int i = 0; i < lines.length; i++) {
       assertEquals(dna.length() + 1, lines[0].split("\t", -1).length);
