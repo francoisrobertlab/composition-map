@@ -24,12 +24,12 @@
 <BorderPane styleClass="about-dialog" xmlns:fx="http://javafx.com/fxml" fx:controller="ca.qc.ircm.compositionmap.gui.AboutDialogPresenter">
 	<center>
 		<VBox styleClass="messages">
-			<Label text="Composition Map version $[project.version]" minHeight="50"/>
+			<Label styleClass="message" text="Composition Map version $[project.version]" minHeight="50"/>
 		</VBox>
 	</center>
 	<bottom>
 		<HBox styleClass="buttons">
-			<Button fx:id="ok" text="OK" onAction="#close" defaultButton="true" cancelButton="true"/>
+			<Button fx:id="ok" styleClass="ok" text="OK" onAction="#close" defaultButton="true" cancelButton="true"/>
 		</HBox>
 	</bottom>
 </BorderPane>
