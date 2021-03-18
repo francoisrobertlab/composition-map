@@ -1,6 +1,6 @@
 package ca.qc.ircm.compositionmap.sequence;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import ca.qc.ircm.compositionmap.test.config.TestFxTestAnnotations;
 import java.nio.file.Path;
