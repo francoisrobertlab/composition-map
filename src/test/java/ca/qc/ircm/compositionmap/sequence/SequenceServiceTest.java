@@ -44,27 +44,32 @@ public class SequenceServiceTest {
     String[] lines = compositionMap.split(SystemUtils.LINE_SEPARATOR);
     assertEquals(5, lines.length);
     for (int i = 0; i < lines.length; i++) {
-      assertEquals(dna.length() + 1, lines[0].split("\t", -1).length);
+      assertEquals(dna.length() + 2, lines[0].split("\t", -1).length);
     }
-    assertEquals("Symbols", lines[0].split("\t", -1)[0]);
+    assertEquals("UNIQID", lines[0].split("\t", -1)[0]);
+    assertEquals("Name", lines[0].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals("S" + (i + 1), lines[0].split("\t", -1)[i + 1]);
+      assertEquals("S" + (i + 1), lines[0].split("\t", -1)[i + 2]);
     }
     assertEquals("A", lines[1].split("\t", -1)[0]);
+    assertEquals("A", lines[1].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals(dna.charAt(i) == 'A' ? "1" : "0", lines[1].split("\t", -1)[i + 1]);
+      assertEquals(dna.charAt(i) == 'A' ? "1" : "0", lines[1].split("\t", -1)[i + 2]);
     }
     assertEquals("T", lines[2].split("\t", -1)[0]);
+    assertEquals("T", lines[2].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals(dna.charAt(i) == 'T' ? "1" : "0", lines[2].split("\t", -1)[i + 1]);
+      assertEquals(dna.charAt(i) == 'T' ? "1" : "0", lines[2].split("\t", -1)[i + 2]);
     }
     assertEquals("C", lines[3].split("\t", -1)[0]);
+    assertEquals("C", lines[3].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals(dna.charAt(i) == 'C' ? "1" : "0", lines[3].split("\t", -1)[i + 1]);
+      assertEquals(dna.charAt(i) == 'C' ? "1" : "0", lines[3].split("\t", -1)[i + 2]);
     }
     assertEquals("G", lines[4].split("\t", -1)[0]);
+    assertEquals("G", lines[4].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals(dna.charAt(i) == 'G' ? "1" : "0", lines[4].split("\t", -1)[i + 1]);
+      assertEquals(dna.charAt(i) == 'G' ? "1" : "0", lines[4].split("\t", -1)[i + 2]);
     }
   }
 
@@ -77,31 +82,37 @@ public class SequenceServiceTest {
     String[] lines = compositionMap.split(SystemUtils.LINE_SEPARATOR);
     assertEquals(6, lines.length);
     for (int i = 0; i < lines.length; i++) {
-      assertEquals(dna.length() + 1, lines[0].split("\t", -1).length);
+      assertEquals(dna.length() + 2, lines[0].split("\t", -1).length);
     }
-    assertEquals("Symbols", lines[0].split("\t", -1)[0]);
+    assertEquals("UNIQID", lines[0].split("\t", -1)[0]);
+    assertEquals("Name", lines[0].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals("S" + (i + 1), lines[0].split("\t", -1)[i + 1]);
+      assertEquals("S" + (i + 1), lines[0].split("\t", -1)[i + 2]);
     }
     assertEquals("A", lines[1].split("\t", -1)[0]);
+    assertEquals("A", lines[1].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals(dna.charAt(i) == 'A' ? "1" : "0", lines[1].split("\t", -1)[i + 1]);
+      assertEquals(dna.charAt(i) == 'A' ? "1" : "0", lines[1].split("\t", -1)[i + 2]);
     }
     assertEquals("C", lines[2].split("\t", -1)[0]);
+    assertEquals("C", lines[2].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals(dna.charAt(i) == 'C' ? "1" : "0", lines[2].split("\t", -1)[i + 1]);
+      assertEquals(dna.charAt(i) == 'C' ? "1" : "0", lines[2].split("\t", -1)[i + 2]);
     }
     assertEquals("G", lines[3].split("\t", -1)[0]);
+    assertEquals("G", lines[3].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals(dna.charAt(i) == 'G' ? "1" : "0", lines[3].split("\t", -1)[i + 1]);
+      assertEquals(dna.charAt(i) == 'G' ? "1" : "0", lines[3].split("\t", -1)[i + 2]);
     }
     assertEquals("R", lines[4].split("\t", -1)[0]);
+    assertEquals("R", lines[4].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals("0", lines[4].split("\t", -1)[i + 1]);
+      assertEquals("0", lines[4].split("\t", -1)[i + 2]);
     }
     assertEquals("T", lines[5].split("\t", -1)[0]);
+    assertEquals("T", lines[5].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals(dna.charAt(i) == 'T' ? "1" : "0", lines[5].split("\t", -1)[i + 1]);
+      assertEquals(dna.charAt(i) == 'T' ? "1" : "0", lines[5].split("\t", -1)[i + 2]);
     }
   }
 
@@ -114,23 +125,27 @@ public class SequenceServiceTest {
     String[] lines = compositionMap.split(SystemUtils.LINE_SEPARATOR);
     assertEquals(4, lines.length);
     for (int i = 0; i < lines.length; i++) {
-      assertEquals(dna.length() + 1, lines[0].split("\t", -1).length);
+      assertEquals(dna.length() + 2, lines[0].split("\t", -1).length);
     }
-    assertEquals("Symbols", lines[0].split("\t", -1)[0]);
+    assertEquals("UNIQID", lines[0].split("\t", -1)[0]);
+    assertEquals("Name", lines[0].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals("S" + (i + 1), lines[0].split("\t", -1)[i + 1]);
+      assertEquals("S" + (i + 1), lines[0].split("\t", -1)[i + 2]);
     }
     assertEquals("A", lines[1].split("\t", -1)[0]);
+    assertEquals("A", lines[1].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals(dna.charAt(i) == 'A' ? "1" : "0", lines[1].split("\t", -1)[i + 1]);
+      assertEquals(dna.charAt(i) == 'A' ? "1" : "0", lines[1].split("\t", -1)[i + 2]);
     }
     assertEquals("C", lines[2].split("\t", -1)[0]);
+    assertEquals("C", lines[2].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals(dna.charAt(i) == 'C' ? "1" : "0", lines[2].split("\t", -1)[i + 1]);
+      assertEquals(dna.charAt(i) == 'C' ? "1" : "0", lines[2].split("\t", -1)[i + 2]);
     }
     assertEquals("T", lines[3].split("\t", -1)[0]);
+    assertEquals("T", lines[3].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals(dna.charAt(i) == 'T' ? "1" : "0", lines[3].split("\t", -1)[i + 1]);
+      assertEquals(dna.charAt(i) == 'T' ? "1" : "0", lines[3].split("\t", -1)[i + 2]);
     }
   }
 
@@ -143,27 +158,32 @@ public class SequenceServiceTest {
     String[] lines = compositionMap.split(SystemUtils.LINE_SEPARATOR);
     assertEquals(5, lines.length);
     for (int i = 0; i < lines.length; i++) {
-      assertEquals(dna.length() + 1, lines[0].split("\t", -1).length);
+      assertEquals(dna.length() + 2, lines[0].split("\t", -1).length);
     }
-    assertEquals("Symbols", lines[0].split("\t", -1)[0]);
+    assertEquals("UNIQID", lines[0].split("\t", -1)[0]);
+    assertEquals("Name", lines[0].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals("S" + (i + 1), lines[0].split("\t", -1)[i + 1]);
+      assertEquals("S" + (i + 1), lines[0].split("\t", -1)[i + 2]);
     }
     assertEquals("A", lines[1].split("\t", -1)[0]);
+    assertEquals("A", lines[1].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals(dna.charAt(i) == 'A' ? "1" : "0", lines[1].split("\t", -1)[i + 1]);
+      assertEquals(dna.charAt(i) == 'A' ? "1" : "0", lines[1].split("\t", -1)[i + 2]);
     }
     assertEquals("C", lines[2].split("\t", -1)[0]);
+    assertEquals("C", lines[2].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals(dna.charAt(i) == 'C' ? "1" : "0", lines[2].split("\t", -1)[i + 1]);
+      assertEquals(dna.charAt(i) == 'C' ? "1" : "0", lines[2].split("\t", -1)[i + 2]);
     }
     assertEquals("R", lines[3].split("\t", -1)[0]);
+    assertEquals("R", lines[3].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals("0", lines[3].split("\t", -1)[i + 1]);
+      assertEquals("0", lines[3].split("\t", -1)[i + 2]);
     }
     assertEquals("T", lines[4].split("\t", -1)[0]);
+    assertEquals("T", lines[4].split("\t", -1)[1]);
     for (int i = 0; i < dna.length(); i++) {
-      assertEquals(dna.charAt(i) == 'T' ? "1" : "0", lines[4].split("\t", -1)[i + 1]);
+      assertEquals(dna.charAt(i) == 'T' ? "1" : "0", lines[4].split("\t", -1)[i + 2]);
     }
   }
 }

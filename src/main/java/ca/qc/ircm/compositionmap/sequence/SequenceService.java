@@ -48,12 +48,12 @@ public class SequenceService {
   public String compositionMap(String sequence, String symbols) {
     List<String> lines = new ArrayList<>();
     // Column headers
-    lines.add("Symbols\t" + IntStream.range(0, sequence.length()).mapToObj(v -> "S" + (v + 1))
+    lines.add("UNIQID\tName\t" + IntStream.range(0, sequence.length()).mapToObj(v -> "S" + (v + 1))
         .collect(Collectors.joining("\t")));
     for (int i = 0; i < symbols.length(); i++) {
       Character symbol = symbols.charAt(i);
-      lines.add(symbol + "\t" + sequence.chars().mapToObj(c -> symbol == c ? "1" : "0")
-          .collect(Collectors.joining("\t")));
+      lines.add(symbol + "\t" + symbol + "\t" + sequence.chars()
+          .mapToObj(c -> symbol == c ? "1" : "0").collect(Collectors.joining("\t")));
     }
     return lines.stream().collect(Collectors.joining(SystemUtils.LINE_SEPARATOR));
   }
