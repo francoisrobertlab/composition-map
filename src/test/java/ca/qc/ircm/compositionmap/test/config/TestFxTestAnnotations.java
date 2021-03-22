@@ -32,7 +32,9 @@ import org.testfx.framework.junit5.ApplicationExtension;
 @Retention(RetentionPolicy.RUNTIME)
 @SpringBootTest
 @ActiveProfiles("test")
-@TestExecutionListeners(value = {}, mergeMode = MergeMode.MERGE_WITH_DEFAULTS)
+@TestExecutionListeners(
+    value = { TestFxTestExecutionListener.class },
+    mergeMode = MergeMode.MERGE_WITH_DEFAULTS)
 @ExtendWith(ApplicationExtension.class)
 public @interface TestFxTestAnnotations {
 
