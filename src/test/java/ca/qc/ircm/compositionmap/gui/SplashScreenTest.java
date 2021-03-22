@@ -9,6 +9,8 @@ import javafx.scene.Cursor;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.TestExecutionListeners.MergeMode;
 import org.testfx.api.FxAssert;
 import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkit;
@@ -16,14 +18,24 @@ import org.testfx.framework.junit5.Start;
 import org.testfx.framework.junit5.Stop;
 
 @TestFxTestAnnotations
+@TestExecutionListeners(value = {}, mergeMode = MergeMode.MERGE_WITH_DEFAULTS)
 public class SplashScreenTest {
   private SplashScreen splash;
   private Stage stage;
 
+  /**
+   * Before each tests.
+   *
+   * @param unused
+   *          unused stage
+   * @throws Throwable
+   *           should not throw exception
+   */
   @Start
   public void beforeEach(Stage unused) throws Throwable {
     this.stage = FxToolkit.registerStage(() -> new Stage());
     splash = new SplashScreen(stage);
+    splash.show();
   }
 
   @Stop
@@ -34,13 +46,12 @@ public class SplashScreenTest {
   @Test
   public void init(FxRobot robot) {
     assertEquals(StageStyle.UNDECORATED, stage.getStyle());
-    FxAssert.verifyThat(robot.rootNode(stage).lookup(".splash"),
-        view -> view.getCursor() == Cursor.WAIT);
-    assertFalse(stage.isShowing());
+    FxAssert.verifyThat(robot.lookup(".splash"), view -> view.getCursor() == Cursor.WAIT);
   }
 
   @Test
   public void show(FxRobot robot) {
+    robot.interact(() -> stage.hide());
     robot.interact(() -> splash.show());
     assertTrue(stage.isShowing());
   }
