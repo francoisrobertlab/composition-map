@@ -47,7 +47,6 @@
       <VBox styleClass="field">
         <Label labelFor="$symbols" text="Symbols for composition map"/>
         <TextField fx:id="symbols" id="symbols"/>
-        <Button styleClass="test" text="Test"/>
       </VBox>
     </VBox>
   </center>
