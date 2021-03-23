@@ -51,7 +51,7 @@ public class FxApplication extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
-    MainGui app = new MainGui();
+    MainGui app = new MainGui(stage);
     notifyPreloader(new ApplicationStarted());
     app.show();
   }

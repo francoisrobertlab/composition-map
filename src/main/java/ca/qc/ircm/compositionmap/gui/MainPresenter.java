@@ -25,6 +25,7 @@ import ca.qc.ircm.compositionmap.sequence.SaveCompositionMapTaskFactory;
 import ca.qc.ircm.compositionmap.sequence.SequenceService;
 import java.io.File;
 import java.util.stream.Collectors;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.concurrent.Task;
@@ -140,5 +141,9 @@ public class MainPresenter {
 
   private String getSequence() {
     return sequenceProperty.getValueSafe().replaceAll("[\\r\\n]", "");
+  }
+
+  final ObjectProperty<File> initialDirectoryProperty() {
+    return outputChooser.initialDirectoryProperty();
   }
 }

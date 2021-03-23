@@ -23,9 +23,9 @@
 
 <BorderPane fx:id="layout" styleClass="main" prefWidth="550" prefHeight="420" xmlns:fx="http://javafx.com/fxml" fx:controller="ca.qc.ircm.compositionmap.gui.MainPresenter">
   <top>
-    <MenuBar fx:id="menu">
-      <Menu text="Help">
-        <MenuItem text="About" onAction="#about"/>
+    <MenuBar fx:id="menu" styleClass="menu">
+      <Menu text="Help" styleClass="help">
+        <MenuItem text="About" onAction="#about" styleClass="about"/>
       </Menu>
     </MenuBar>
   </top>
@@ -38,21 +38,22 @@
       <VBox styleClass="field">
         <Label text="Pre-defined symbols"/>
         <HBox styleClass="symbols-button">
-          <Button text="Protein" onAction="#proteinSymbols"/>
-          <Button text="DNA" onAction="#dnaSymbols"/>
-          <Button text="RNA" onAction="#rnaSymbols"/>
-          <Button text="Other" onAction="#otherSymbols"/>
+          <Button styleClass="protein" text="Protein" onAction="#proteinSymbols"/>
+          <Button styleClass="dna" text="DNA" onAction="#dnaSymbols"/>
+          <Button styleClass="rna" text="RNA" onAction="#rnaSymbols"/>
+          <Button styleClass="other" text="Other" onAction="#otherSymbols"/>
         </HBox>
       </VBox>
       <VBox styleClass="field">
         <Label labelFor="$symbols" text="Symbols for composition map"/>
         <TextField fx:id="symbols" id="symbols"/>
+        <Button styleClass="test" text="Test"/>
       </VBox>
     </VBox>
   </center>
   <bottom>
     <HBox styleClass="buttons">
-      <Button text="Save composition map" onAction="#save"/>
+      <Button text="Save composition map" onAction="#save" styleClass="save"/>
     </HBox>
   </bottom>
 </BorderPane>

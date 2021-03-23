@@ -25,13 +25,18 @@ import javafx.stage.Stage;
  */
 public class MainGui {
   private Stage stage;
+  MainPresenter presenter;
 
   /**
    * Creates application window.
+   *
+   * @param stage
+   *          stage
    */
-  public MainGui() {
+  public MainGui(Stage stage) {
+    this.stage = stage;
     MainView view = new MainView();
-    stage = new Stage();
+    presenter = (MainPresenter) view.getPresenter();
     stage.setTitle("Composition Map");
     Scene scene = new Scene(view.getView());
     scene.getStylesheets().add("error.css");
