@@ -191,6 +191,9 @@ public class MainGuiTest {
     // Enter "dna" for dna.txt output file in FileChooser.
     robot.sleep(3, SECONDS);
     robot.push(KeyCode.D, KeyCode.N, KeyCode.A);
+    if (SystemUtils.IS_OS_LINUX) {
+      robot.push(KeyCode.PERIOD, KeyCode.T, KeyCode.X).push(KeyCode.T);
+    }
     robot.push(KeyCode.ENTER);
     robot.sleep(3, SECONDS);
 
