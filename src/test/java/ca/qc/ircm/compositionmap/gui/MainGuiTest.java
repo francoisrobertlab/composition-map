@@ -28,6 +28,7 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.SystemUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -69,7 +70,9 @@ public class MainGuiTest {
     Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
     assertEquals(visualBounds.getHeight(), stage.getMaxHeight());
     assertEquals(visualBounds.getWidth(), stage.getMaxWidth());
-    assertTrue(robot.lookup(".menu").queryAs(MenuBar.class).isUseSystemMenuBar());
+    if (SystemUtils.IS_OS_MAC_OSX) {
+      assertTrue(robot.lookup(".menu").queryAs(MenuBar.class).isUseSystemMenuBar());
+    }
   }
 
   @Test

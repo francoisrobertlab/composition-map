@@ -69,9 +69,7 @@ public class MainPresenter {
 
   @FXML
   private void initialize() {
-    if (SystemUtils.IS_OS_MAC_OSX) {
-      menu.setUseSystemMenuBar(true);
-    }
+    menu.setUseSystemMenuBar(true);
 
     sequenceProperty.bindBidirectional(sequence.textProperty());
     symbolsProperty.bindBidirectional(symbols.textProperty());
