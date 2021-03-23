@@ -9,8 +9,6 @@ import javafx.scene.Cursor;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.TestExecutionListeners.MergeMode;
 import org.testfx.api.FxAssert;
 import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkit;
@@ -18,7 +16,6 @@ import org.testfx.framework.junit5.Start;
 import org.testfx.framework.junit5.Stop;
 
 @TestFxTestAnnotations
-@TestExecutionListeners(value = {}, mergeMode = MergeMode.MERGE_WITH_DEFAULTS)
 public class SplashScreenTest {
   private SplashScreen splash;
   private Stage stage;

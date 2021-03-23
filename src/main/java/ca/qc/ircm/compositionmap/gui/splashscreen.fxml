@@ -20,6 +20,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox styleClass="splash" xmlns:fx="http://javafx.com/fxml" fx:controller="ca.qc.ircm.compositionmap.gui.SplashScreenPresenter">
+<HBox styleClass="splash" xmlns:fx="http://javafx.com/fxml">
   <Label text="Composition Map is loading"/>
 </HBox>

@@ -17,6 +17,8 @@
 
 package ca.qc.ircm.compositionmap.gui;
 
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -34,14 +36,17 @@ public class SplashScreen {
    *
    * @param stage
    *          stage
+   * @throws IOException
+   *           could not load FXML file
    */
-  public SplashScreen(Stage stage) {
+  public SplashScreen(Stage stage) throws IOException {
     this.stage = stage;
+    Parent parent = FXMLLoader.load(this.getClass().getResource("splashscreen.fxml"));
     stage.initStyle(StageStyle.UNDECORATED);
-    SplashScreenView view = new SplashScreenView();
-    Parent viewNode = view.getView();
-    viewNode.setCursor(Cursor.WAIT);
-    Scene scene = new Scene(viewNode);
+    parent.getStylesheets()
+        .add(getClass().getPackageName().replaceAll("\\.", "/") + "/splashscreen.css");
+    parent.setCursor(Cursor.WAIT);
+    Scene scene = new Scene(parent);
     stage.setScene(scene);
   }
 

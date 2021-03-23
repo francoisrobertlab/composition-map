@@ -17,10 +17,8 @@
 
 package ca.qc.ircm.compositionmap.gui;
 
-import com.airhacks.afterburner.views.FXMLView;
-
 /**
  * Splash screen view.
  */
-public class SplashScreenView extends FXMLView {
+public class SplashScreenView {
 }
