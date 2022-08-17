@@ -267,6 +267,7 @@
               <exclude>**/*.txt</exclude>
               <exclude>**/*.log</exclude>
               <exclude>**/*.log.*</exclude>
+              <exclude>**/*.icns</exclude>
             </excludes>
           </configuration>
           <executions>
