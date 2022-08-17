@@ -276,12 +276,12 @@
               <exclude>**/*.log</exclude>
               <exclude>**/*.log.*</exclude>
             </excludes>
-            <executions>
-              <execution>
-                <goals><goal>check</goal></goals>
-              </execution>
-            </executions>
           </configuration>
+          <executions>
+            <execution>
+              <goals><goal>check</goal></goals>
+            </execution>
+          </executions>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
