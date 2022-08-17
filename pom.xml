@@ -61,7 +61,8 @@
     <jpackage>${java.home}/bin/jpackage</jpackage>
     <jpackage.skip>true</jpackage.skip>
     <jpackage.input>${project.build.directory}/jpackage</jpackage.input>
-    <jpackage.modules>java.base,java.desktop,java.naming,java.scripting,jdk.unsupported,jdk.unsupported.desktop
+    <jpackage.modules>
+      java.base,java.desktop,java.naming,java.scripting,javafx.controls,javafx.fxml,jdk.unsupported,jdk.unsupported.desktop
     </jpackage.modules>
     <jpackage.options.windows>${project.build.directory}/classes/jpackage/windows.txt</jpackage.options.windows>
     <jpackage.options.mac>${project.build.directory}/classes/jpackage/mac.txt</jpackage.options.mac>
@@ -129,16 +130,6 @@
       <groupId>com.airhacks</groupId>
       <artifactId>afterburner.fx</artifactId>
       <version>${afterburner.fx.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.openjfx</groupId>
-      <artifactId>javafx-controls</artifactId>
-      <version>${javafx.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.openjfx</groupId>
-      <artifactId>javafx-fxml</artifactId>
-      <version>${javafx.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
